@@ -22,13 +22,25 @@ class city{
 
 
 
-
-
-
-
 Arrays
 Collections
+    1.we can add dynamic(runtime) element.
+    2.no fixed size for the collection.
+    3.custom methods for all the collection(sort,comparison)
+    4.key,value pair collection(hashmap)
+    5.collections will not accept the primitve data type.so need to use only object or wrapper classes.
+
 	list->arraylist,vector,linkedlist
+	        comparator ->creating custom class for sorting.(interface)
 	set->hashset,linkedhashset,treetset
 	queue,stack
+
+
 	map->hashmap,linkedhashmap,treemap
+
+
+Collections
+Threads
+Casting
+Mysql
+Spring boot

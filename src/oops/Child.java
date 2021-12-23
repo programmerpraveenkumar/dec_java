@@ -37,12 +37,14 @@ public class Child  extends Parent{
         System.out.println(c.name2);//calling from grand parent(parent2)
         c.printChild();//can access child method
         c.printName();//calling parent method
+        System.out.println("--- ploy example---");
         //polymorphism
-        Parent p = new Child();//using child class can create obj for parent .
+        Parent p;//one object will take multiple forms
+        p = new Child();//using child class can create obj for parent .
         p.printName();
 
-        Parent pa = new Parent();
-        pa.printName();
+        p = new Parent();
+       p.printName();
 
 //        Parent2 p2 = new Child();//using child class can create obj for parent .
 //        p.printName();
