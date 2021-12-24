@@ -33,10 +33,19 @@ Collections
 	list->arraylist,vector,linkedlist
 	        comparator ->creating custom class for sorting.(interface)
 	set->hashset,linkedhashset,treetset
+        set
+            will not allow for duplicates.
+        hashset
+            will not maintain the insertion order
+            uses the hashtable to store the data.
+    linkedhast,treeset
 	queue,stack
 
 
 	map->hashmap,linkedhashmap,treemap
+	    key,value
+	    key should not be duplicate.
+	    insertion order will not maintain insertion order
 
 
 Collections
