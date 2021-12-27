@@ -1,6 +1,7 @@
 package CollectionsSample;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /*
 <> diamond operator
@@ -20,17 +21,25 @@ public class ArrayListPojo {
         person1.setAge(11);
         person1.setName("test2");
 
+        list1.add(person1);//adding object to arraylist
         list1.add(person0);//adding object to arraylist
         list1.add(person1);//adding object to arraylist
-        list1.add(person1);//adding object to arraylist
+        System.out.println("before sorting.---");
+        for(Person tmp:list1){
+            //System.out.println(tmp);
+            System.out.println(tmp.getAge()+" "+tmp.getName());
+        }
+        Collections.sort(list1);
 
         Person personZero = list1.get(0);
         System.out.println("0th index "+personZero.getAge()+" "+personZero.getName()+" -- "+personZero.getPhoneNo());
 
         System.out.println(list1.size());
+        System.out.println("--after sorting.---");
+
         for(Person tmp:list1){
-            System.out.println(tmp);
-            //System.out.println(tmp.getAge()+" "+tmp.getName());
+            //System.out.println(tmp);
+            System.out.println(tmp.getAge()+" "+tmp.getName());
         }
     }
 }

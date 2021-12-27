@@ -8,6 +8,7 @@ public class CityMain {
                 City city2 = new City();
                 city2.setName("madurai");
                 city2.setPeopleCount(1500);
+                System.out.println(city2);
 
             System.out.println(city2.getName()+" "+city2.getPeopleCount());
         }
