@@ -8,6 +8,7 @@ public class ThreadCallablesample  {
         ExecutorService ser = Executors.newSingleThreadExecutor();
         ser.execute(new SampleRunnable());//only for runnables
         ser.submit(new SampleCallable());//both runnable and callable
+        ser.submit(new SampleRunnable());//both runnable and callable
         ser.shutdown();//ony then program will exit for executor service.
 
     }

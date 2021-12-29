@@ -24,6 +24,8 @@ public class ArrayListPojo {
         list1.add(person1);//adding object to arraylist
         list1.add(person0);//adding object to arraylist
         list1.add(person1);//adding object to arraylist
+        list1.add(new Person(10,"test"));
+
         System.out.println("before sorting.---");
         for(Person tmp:list1){
             //System.out.println(tmp);

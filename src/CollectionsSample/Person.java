@@ -3,7 +3,13 @@ package CollectionsSample;
 public class Person implements  Comparable<Person> {
     private String name;
     private int age;
+    public Person(){
 
+    }
+    public Person(int age,String name){
+        this.age = age;
+        this.name = name;
+    }
     public String getPhoneNo() {
         return phoneNo;
     }
