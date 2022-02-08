@@ -17,8 +17,14 @@ public class DbConnectionSelect {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");//mysql driver from the exteranl jar
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jan_morning","root","");
+           // Connection con2=DriverManager.getConnection("jdbc:mysql://192.168.15.6:3306/jan_morning_2","root","");
             Statement stmt = con.createStatement();//create obj for execute the sql quries
-            ResultSet resDb = stmt.executeQuery("select * from test");//execute the query in the mysql
+
+           ResultSet resDbCount = stmt.executeQuery("select count(id) as count from test");//execute the query in the mysql
+           resDbCount.next();
+           System.out.println("Total record "+resDbCount.getInt("count"));
+
+             ResultSet resDb = stmt.executeQuery("select id,name,email from test limit 10,10");//execute the query in the mysql
             //below loop will execute till last data
             while(resDb.next()) {
                 //access the data using columnname from the table
