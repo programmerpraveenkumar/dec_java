@@ -23,6 +23,11 @@ public class HomeController {
         System.out.println(email);
         return this.homeService.getName()+"--get--"+name;
     }
+    @PostMapping("home")
+    public String postName(@RequestParam String name){
+        return this.homeService.getName()+"--post"+name;
+
+    }
     @GetMapping("home1")
     public String getName1(){
 
@@ -43,11 +48,7 @@ public class HomeController {
     }
 
 
-    @PostMapping("home")
-    public String postName(@RequestParam String name){
-        return this.homeService.getName()+"--post"+name;
 
-    }
 
 
 }

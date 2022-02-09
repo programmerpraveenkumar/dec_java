@@ -8,6 +8,7 @@ public class JanSpringOotApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(JanSpringOotApplication.class, args);
+
 	}
 
 }

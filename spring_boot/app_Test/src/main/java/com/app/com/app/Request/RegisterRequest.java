@@ -1,7 +1,20 @@
 package com.app.com.app.Request;
 
 public class RegisterRequest {
-    String email, re_password, mobile_no, Password;
+    String email;
+    String re_password;
+    String mobile_no;
+    String Password;
+    String name;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
 
     public String getMobile_no() {
         return mobile_no;
