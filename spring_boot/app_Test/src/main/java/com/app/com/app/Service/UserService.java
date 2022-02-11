@@ -6,6 +6,8 @@ import com.app.com.app.Request.LoginRequest;
 import com.app.com.app.Request.RegisterRequest;
 import com.app.com.app.Response.LoginResponse;
 import org.apache.catalina.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,7 @@ import java.util.Optional;
 
 @Service
 public class UserService {
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
     UserRepo userRepo;//DI for the repo
@@ -73,10 +76,13 @@ public class UserService {
 
     public UserModel getUserById(Integer id)throws Exception{
         //optional will check for null exception.(JAVA 8)
+        logger.info("in-service");
         Optional<UserModel> user = this.userRepo.findById(id);//get user by ID(PK)
         if(user.isPresent()){
+            logger.info("OUT");
             return user.get();//get the data from optional -- java8
         }else{
+            logger.error("Error is not found {}",id);
             //throw if user is not found with id
             throw new Exception("User is not found");
         }
@@ -113,6 +119,38 @@ public class UserService {
 //        }
 
     }
+    public Boolean checkTokenForUserId(String userId,String token)throws Exception{
+
+        if(token == null || token.equals("")){
+            System.out.println("token is null..so it will not go to the controller.");
+            throw new Exception("Token is null");
+            //return false;//http request will be stopped here.
+        }
+        else if(userId == null || userId.equals("")){
+            System.out.println("token is null..so it will not go to the controller.");
+            throw new Exception("User ID is null");
+            //return false;//http request will be stopped here.
+        }
+        Integer user_id_int = Integer.parseInt(userId);//string to int
+        //IMPL1
+        //getTokenByUserId
+        userRepo.getTokenByUserId(user_id_int,token).orElseThrow(()->new Exception("Token is not valid for this user"));
+        return true;
+
+        //IMPL2
+        //UserModel um = userRepo.getTokenByUserId(userId,token).orElseThrow(()->new Exception("token is not valid""));
+
+
+//IMPL3
+//        Optional<UserModel> um = userRepo.getTokenByUserId(userId,token);
+//        if(um.isPresent()){
+//            return true;
+//        }else{
+//           throw new Exception("Token is not found")
+//        }
+
+    }
+
 
 
 

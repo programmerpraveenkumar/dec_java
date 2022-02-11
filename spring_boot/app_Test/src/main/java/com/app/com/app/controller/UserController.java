@@ -7,6 +7,8 @@ import com.app.com.app.Response.ErrorResponse;
 import com.app.com.app.Response.LoginResponse;
 import com.app.com.app.Service.HomeService;
 import com.app.com.app.Service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,8 @@ import java.util.List;
 @RestController
 @RequestMapping("user_ctrl")
 public class UserController {
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     HomeService homeService;
     @Autowired
@@ -44,10 +48,9 @@ public class UserController {
         return "sample 3";
     }
     @PostMapping("user_register_str")
-    public ResponseEntity user_register_Str(@RequestBody String name,@RequestHeader String token,
-                                    @RequestHeader Integer user_id){
+    public ResponseEntity user_register_Str(@RequestBody String name){
         try{
-            userService.checkTokenForUserId(user_id,token);
+            // userService.checkTokenForUserId(user_id,token);
             return ResponseEntity.ok("success flow");
         }catch (Exception e){
             return  ResponseEntity.badRequest().body(e.getMessage());//response with obj
@@ -129,13 +132,19 @@ public class UserController {
 
     @GetMapping("getUser/{user_id}")
     public ResponseEntity getUser(@PathVariable Integer user_id){
+        logger.info("IN ");
         try{
+
+            logger.info("OUT ");
             return ResponseEntity.ok(this.userService.getUserById(user_id));
         }catch (Exception e){
-            LoginResponse res = new LoginResponse();
-            res.setMessage(e.getMessage());//error will come from service class
-            return ResponseEntity.badRequest().body(res);//failure response with 400 status code
+            logger.info("ERROR {} ",e.getMessage());
+            throw new RuntimeException(e.getMessage());
+//            LoginResponse res = new LoginResponse();
+//            res.setMessage(e.getMessage());//error will come from service class
+//            return ResponseEntity.badRequest().body(res);//failure response with 400 status code
         }
+
     }
 
 
