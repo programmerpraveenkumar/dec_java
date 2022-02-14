@@ -14,7 +14,20 @@ public class UserModel {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     Integer id;
 
-    String password,email,name,dob;
+    String password;
+    String email;
+    String name;
+    String dob;
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    String picture;
     Integer balance;
     String token;
 

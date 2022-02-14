@@ -74,6 +74,10 @@ public class UserService {
         return 0;
     }
 
+    public void uploadPicture(String picName,Integer userId){
+        userRepo.updatePictureUserId(userId,picName);
+    }
+
     public UserModel getUserById(Integer id)throws Exception{
         //optional will check for null exception.(JAVA 8)
         logger.info("in-service");
@@ -97,7 +101,6 @@ public class UserService {
             //print the error
             return false;
         }
-
     }
     public Boolean checkTokenForUserId(int userId,String token)throws Exception{
 

@@ -1,0 +1,42 @@
+2022-02-11 11:01:05,784 INFO com.app.JanSpringOotApplication [restartedMain] Starting JanSpringOotApplication using Java 1.8.0_171 on praveen-mac.local with PID 2417 (/Volumes/softwares/projects/spring_boot/app_Test/target/classes started by praveen in /Volumes/softwares/projects/spring_boot/app_Test)
+2022-02-11 11:01:05,788 INFO com.app.JanSpringOotApplication [restartedMain] No active profile set, falling back to default profiles: default
+2022-02-11 11:01:05,871 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-02-11 11:01:05,871 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-02-11 11:01:06,731 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-11 11:01:06,822 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 76 ms. Found 1 JPA repository interfaces.
+2022-02-11 11:01:08,278 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8082 (http)
+2022-02-11 11:01:08,382 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2510 ms
+2022-02-11 11:01:10,050 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-11 11:01:10,675 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-11 11:01:11,951 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-02-11 11:01:12,007 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8082 (http) with context path ''
+2022-02-11 11:01:12,019 INFO com.app.JanSpringOotApplication [restartedMain] Started JanSpringOotApplication in 6.794 seconds (JVM running for 7.506)
+2022-02-11 11:01:16,979 INFO org.springframework.web.servlet.DispatcherServlet [http-nio-8082-exec-2] Initializing Servlet 'dispatcherServlet'
+2022-02-11 11:01:16,981 INFO org.springframework.web.servlet.DispatcherServlet [http-nio-8082-exec-2] Completed initialization in 1 ms
+2022-02-11 11:01:17,151 INFO com.app.com.app.controller.UserController [http-nio-8082-exec-2] IN 
+2022-02-11 11:01:17,151 INFO com.app.com.app.controller.UserController [http-nio-8082-exec-2] OUT 
+2022-02-11 11:01:17,173 INFO com.app.com.app.controller.UserController [http-nio-8082-exec-2] ERROR User is not found 
+2022-02-11 11:01:17,235 WARN org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8082-exec-2] Resolved [java.lang.RuntimeException: User is not found]
+2022-02-11 11:03:28,911 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-11 11:03:32,135 INFO com.app.JanSpringOotApplication [restartedMain] Starting JanSpringOotApplication using Java 1.8.0_171 on praveen-mac.local with PID 2451 (/Volumes/softwares/projects/spring_boot/app_Test/target/classes started by praveen in /Volumes/softwares/projects/spring_boot/app_Test)
+2022-02-11 11:03:32,137 INFO com.app.JanSpringOotApplication [restartedMain] No active profile set, falling back to default profiles: default
+2022-02-11 11:03:32,184 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-02-11 11:03:32,184 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-02-11 11:03:32,849 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-11 11:03:32,920 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 61 ms. Found 1 JPA repository interfaces.
+2022-02-11 11:03:33,796 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8082 (http)
+2022-02-11 11:03:33,903 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1719 ms
+2022-02-11 11:03:35,623 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-11 11:03:36,502 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-11 11:03:38,084 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-02-11 11:03:38,145 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8082 (http) with context path ''
+2022-02-11 11:03:38,162 INFO com.app.JanSpringOotApplication [restartedMain] Started JanSpringOotApplication in 6.615 seconds (JVM running for 7.283)
+2022-02-11 11:03:50,627 INFO org.springframework.web.servlet.DispatcherServlet [http-nio-8082-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-02-11 11:03:50,628 INFO org.springframework.web.servlet.DispatcherServlet [http-nio-8082-exec-1] Completed initialization in 1 ms
+2022-02-11 11:03:50,798 INFO com.app.com.app.controller.UserController [http-nio-8082-exec-1] IN 
+2022-02-11 11:03:50,798 INFO com.app.com.app.controller.UserController [http-nio-8082-exec-1] OUT 
+2022-02-11 11:03:50,798 INFO com.app.com.app.Service.UserService [http-nio-8082-exec-1] in-service
+2022-02-11 11:03:50,823 ERROR com.app.com.app.Service.UserService [http-nio-8082-exec-1] Error is not found 122
+2022-02-11 11:03:50,825 INFO com.app.com.app.controller.UserController [http-nio-8082-exec-1] ERROR User is not found 
+2022-02-11 11:03:50,893 WARN org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [http-nio-8082-exec-1] Resolved [java.lang.RuntimeException: User is not found]
+2022-02-11 11:12:22,042 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'

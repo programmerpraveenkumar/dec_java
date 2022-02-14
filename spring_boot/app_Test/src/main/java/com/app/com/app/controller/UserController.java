@@ -7,19 +7,29 @@ import com.app.com.app.Response.ErrorResponse;
 import com.app.com.app.Response.LoginResponse;
 import com.app.com.app.Service.HomeService;
 import com.app.com.app.Service.UserService;
+
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;//file upload
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
 @RequestMapping("user_ctrl")
 public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-
+    String UPLOADED_FOLDER = "/Volumes/softwares/upload_folder/jan-sp-boot/";//folder path to store the  file
     @Autowired
     HomeService homeService;
     @Autowired
@@ -55,6 +65,54 @@ public class UserController {
         }catch (Exception e){
             return  ResponseEntity.badRequest().body(e.getMessage());//response with obj
 
+        }
+    }
+    @PostMapping("uploadFile")
+    public ResponseEntity uploadFile(@RequestParam MultipartFile file,@RequestParam Integer userId){
+        try{
+            String fileName = file.getOriginalFilename();
+            String folderWithName = UPLOADED_FOLDER+fileName;
+            Path path = Paths.get(folderWithName);//set path with filename
+//            File f = new File(""+UPLOADED_FOLDER+fileName);
+//            if(f.exists()){
+//                fileName = fileName+"(1)";
+//                path = Paths.get(UPLOADED_FOLDER +fileName);//set path with filename
+//            }
+            Files.write(path, file.getBytes());//write the file in the location
+            //update query against the user_id with name
+            userService.uploadPicture(fileName,userId);
+            return ResponseEntity.ok("upload success "+file.getOriginalFilename());//return the file name
+        }catch (Exception e){
+            return  ResponseEntity.badRequest().body(e.getMessage());//response with obj
+        }
+    }
+    @PostMapping("uploadMutliFile")
+    public ResponseEntity uploadFiles(@RequestParam MultipartFile[] file,@RequestParam Integer userId){
+        try{
+            for(MultipartFile f:file){
+                String fileName = f.getOriginalFilename();
+            String folderWithName = UPLOADED_FOLDER+fileName;
+            Path path = Paths.get(folderWithName);//set path with filename
+            Files.write(path, f.getBytes());//write the file in the location
+        }
+            return ResponseEntity.ok("upload success Total files"+file.length);//return the file name
+
+        }catch (Exception e){
+            return  ResponseEntity.badRequest().body(e.getMessage());//response with obj
+        }
+    }
+
+
+    //below method will return the image as jpeg
+    @GetMapping(value="filename/{name}",produces = MediaType.IMAGE_JPEG_VALUE)
+    public @ResponseBody byte[] readImg(@PathVariable String name){
+        try{
+            //calling service for getting the name from the databse.
+            String fileWIthPath = UPLOADED_FOLDER+name;
+            InputStream in = new FileInputStream(fileWIthPath);
+            return IOUtils.toByteArray(in);
+        }catch (Exception e){
+            return null;
         }
     }
 //    @PostMapping("user_login")

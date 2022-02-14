@@ -22,4 +22,10 @@ public interface UserRepo extends JpaRepository<UserModel,Integer> {
     @Modifying
     @Query("update UserModel um set  um.token=?2 where um.id=?1")
     void updateTokenByUserId(Integer userId,String token);
+
+    @Transactional
+    @Modifying
+    @Query("update UserModel um set  um.picture=?2 where um.id=?1")
+    void updatePictureUserId(Integer userId,String picName);
+
 }
