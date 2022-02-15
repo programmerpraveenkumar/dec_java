@@ -104,11 +104,16 @@ public class UserController {
 
 
     //below method will return the image as jpeg
-    @GetMapping(value="filename/{name}",produces = MediaType.IMAGE_JPEG_VALUE)
+    @GetMapping(value="imgRead/{name}",produces = MediaType.IMAGE_JPEG_VALUE)
     public @ResponseBody byte[] readImg(@PathVariable String name){
         try{
-            //calling service for getting the name from the databse.
+
+            //calling service for getting the name from the database using the userId
             String fileWIthPath = UPLOADED_FOLDER+name;
+            File file = new File(fileWIthPath);
+            if(!file.exists()){
+                fileWIthPath = UPLOADED_FOLDER+"no_img.png";
+            }
             InputStream in = new FileInputStream(fileWIthPath);
             return IOUtils.toByteArray(in);
         }catch (Exception e){
@@ -233,6 +238,19 @@ public class UserController {
     //store the data in the database
     @PostMapping("storeuser")
     public ResponseEntity storeUser(@RequestBody RegisterRequest req){
+        LoginResponse res = new LoginResponse();
+        try{
+            this.userService.storeUser(req);
+            res.setMessage("inserted successfully");
+            return ResponseEntity.ok(res);//success reponse with 200 status code
+        }catch(Exception e){
+            e.printStackTrace();
+            res.setMessage("Error while insert");
+            return ResponseEntity.badRequest().body(res);//failure response with 400 status code
+        }
+    }
+    @PostMapping("multistoreuser")
+    public ResponseEntity storeUser(@RequestBody List<RegisterRequest> req){
         LoginResponse res = new LoginResponse();
         try{
             this.userService.storeUser(req);

@@ -6,6 +6,16 @@ public class RegisterRequest {
     String mobile_no;
     String Password;
     String name;
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    String cityName;
     public String getName() {
         return name;
     }

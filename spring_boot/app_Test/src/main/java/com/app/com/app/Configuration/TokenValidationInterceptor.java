@@ -1,3 +1,6 @@
+/*
+login,register
+ */
 package com.app.com.app.Configuration;
 
 import com.app.com.app.Service.UserService;
@@ -15,17 +18,24 @@ public class TokenValidationInterceptor implements HandlerInterceptor {
     UserService service;
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-//        String token = request.getHeader("token");
-//        String user_id = request.getHeader("user_id");
-//        try {
-//            service.checkTokenForUserId(user_id, token);//error may throw.
-//            System.out.println("Request is fine..so can go to the controller.");
-//            return true;
-//        } catch (Exception e) {
-//            System.out.println("Exception " + e.getMessage());
-//            throw new RuntimeException(e.getMessage());
-//        }
-        return true;
+        //current url
+        String current_url = request.getRequestURL().toString();//exclude the url from token validation for image
+        if(current_url.contains("user_ctrl/imgRead") ||
+                current_url.contains("user_ctrl/user_login") ||
+                current_url.contains("user_ctrl/storeuser") ){
+            return true;
+        }
+        String token = request.getHeader("token");
+        String user_id = request.getHeader("user_id");
+        try {
+            service.checkTokenForUserId(user_id, token);//error may throw.
+            System.out.println("Request is fine..so can go to the controller.");
+            return true;
+        } catch (Exception e) {
+            System.out.println("Exception " + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+
     }
 
 

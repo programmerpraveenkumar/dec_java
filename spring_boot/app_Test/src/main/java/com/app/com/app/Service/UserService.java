@@ -1,6 +1,8 @@
 package com.app.com.app.Service;
 
+import com.app.com.app.Model.CityModel;
 import com.app.com.app.Model.UserModel;
+import com.app.com.app.Repo.CityRepo;
 import com.app.com.app.Repo.UserRepo;
 import com.app.com.app.Request.LoginRequest;
 import com.app.com.app.Request.RegisterRequest;
@@ -11,8 +13,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import sun.reflect.annotation.ExceptionProxy;
 
 import javax.swing.text.html.Option;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +27,8 @@ public class UserService {
 
     @Autowired
     UserRepo userRepo;//DI for the repo
+    @Autowired
+    CityRepo cityRepo;//DI for the repo
     public boolean checkUser(LoginRequest req)throws Exception{
         if(req.getEmail().equals("admin@gmail.com") && req.getPassword().equals("admin")){
             return  true;
@@ -172,5 +178,45 @@ public class UserService {
 //        userModel.setPassword("sample password");
         this.userRepo.save(userModel);//store the data in the database.
         return true;//success sql
+    }
+    public Boolean storeUser(List<RegisterRequest> req) throws  Exception{
+        try{
+            List<UserModel> userModelList = new ArrayList<UserModel>();//ref of user Table
+            req.stream().forEach(
+                    obj->{
+                        try {
+                            UserModel userModel = new UserModel();
+                            userModel.setCity(this.createOrReturnCity(obj.getCityName()));
+                            userModel.setName(obj.getName());
+                            userModel.setEmail(obj.getEmail());
+                            userModel.setPassword(obj.getPassword());
+                            userModelList.add(userModel);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+            );
+            System.out.println(userModelList.size()+" going to insert ");
+            this.userRepo.saveAll(userModelList);//insert multiple data.
+        }catch (Exception e){
+            e.printStackTrace();
+            throw  e;
+        }
+
+        return true;//success sql
+    }
+
+    private CityModel createOrReturnCity(String name) throws Exception{
+        Optional<CityModel> cityModel = cityRepo.getCityByName(name);
+        if(cityModel.isPresent()){
+            return  cityModel.get();
+        }else{
+            System.out.println("city is not present.so creating new");
+            CityModel city = new CityModel();
+            city.setName(name);
+            cityRepo.save(city);
+            return  city;
+        }
     }
 }
