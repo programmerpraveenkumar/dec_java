@@ -1,11 +1,23 @@
 package com.app.com.app.Request;
 
+import java.util.List;
+
 public class RegisterRequest {
     String email;
     String re_password;
     String mobile_no;
     String Password;
     String name;
+
+    List<String> mobileNo;
+    public List<String> getMobileNo() {
+        return mobileNo;
+    }
+
+    public void setMobileNo(List<String> mobileNo) {
+        this.mobileNo = mobileNo;
+    }
+
 
     public String getCityName() {
         return cityName;

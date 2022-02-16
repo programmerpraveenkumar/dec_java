@@ -1,6 +1,7 @@
 package com.app.com.app.Service;
 
 import com.app.com.app.Model.CityModel;
+import com.app.com.app.Model.MobileModel;
 import com.app.com.app.Model.UserModel;
 import com.app.com.app.Repo.CityRepo;
 import com.app.com.app.Repo.UserRepo;
@@ -131,11 +132,13 @@ public class UserService {
     public Boolean checkTokenForUserId(String userId,String token)throws Exception{
 
         if(token == null || token.equals("")){
+            logger.info("token is null {}"+token);
             System.out.println("token is null..so it will not go to the controller.");
             throw new Exception("Token is null");
             //return false;//http request will be stopped here.
         }
         else if(userId == null || userId.equals("")){
+            logger.info("user_id is null {}"+token);
             System.out.println("token is null..so it will not go to the controller.");
             throw new Exception("User ID is null");
             //return false;//http request will be stopped here.
@@ -143,7 +146,9 @@ public class UserService {
         Integer user_id_int = Integer.parseInt(userId);//string to int
         //IMPL1
         //getTokenByUserId
+
         userRepo.getTokenByUserId(user_id_int,token).orElseThrow(()->new Exception("Token is not valid for this user"));
+        logger.info("ok for token validation {}"+token);
         return true;
 
         //IMPL2
@@ -186,7 +191,7 @@ public class UserService {
                     obj->{
                         try {
                             UserModel userModel = new UserModel();
-                            userModel.setCity(this.createOrReturnCity(obj.getCityName()));
+                            userModel.setCity(this.createOrReturnCity(obj.getCityName()));//one to one
                             userModel.setName(obj.getName());
                             userModel.setEmail(obj.getEmail());
                             userModel.setPassword(obj.getPassword());
@@ -205,6 +210,46 @@ public class UserService {
         }
 
         return true;//success sql
+    }
+    public Boolean storeUserWithMobile(List<RegisterRequest> req) throws  Exception{
+        try{
+            List<UserModel> userModelList = new ArrayList<UserModel>();//ref of user Table
+            req.stream().forEach(
+                    obj->{
+                        try {
+                            UserModel userModel = new UserModel();
+                            userModel.setCity(this.createOrReturnCity(obj.getCityName()));//one to one
+                            userModel.setName(obj.getName());
+                            userModel.setEmail(obj.getEmail());
+                            userModel.setPassword(obj.getPassword());
+                            //userModel.setMobile(createMobileModelWithRequst(obj.getMobileNo());//argument is list
+                            userModelList.add(userModel);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+            );
+            System.out.println(userModelList.size()+" going to insert ");
+            this.userRepo.saveAll(userModelList);//insert multiple data.
+        }catch (Exception e){
+            e.printStackTrace();
+            throw  e;
+        }
+
+        return true;//success sql
+    }
+
+    private List<MobileModel> createMobileModelWithRequst(List<String> mobileReq){
+        List<MobileModel> listMOdel = new ArrayList<>();
+        //convert the request to mobile model
+        mobileReq.stream().forEach((o)->{
+                            MobileModel mobileModel  = new MobileModel();
+                            mobileModel.setMobile_no(o);
+                            listMOdel.add(mobileModel);
+                       }
+                    );
+        return listMOdel;
     }
 
     private CityModel createOrReturnCity(String name) throws Exception{

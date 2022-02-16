@@ -19,22 +19,26 @@ public class TokenValidationInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         //current url
-        String current_url = request.getRequestURL().toString();//exclude the url from token validation for image
-        if(current_url.contains("user_ctrl/imgRead") ||
-                current_url.contains("user_ctrl/user_login") ||
-                current_url.contains("user_ctrl/storeuser") ){
-            return true;
-        }
-        String token = request.getHeader("token");
-        String user_id = request.getHeader("user_id");
-        try {
-            service.checkTokenForUserId(user_id, token);//error may throw.
-            System.out.println("Request is fine..so can go to the controller.");
-            return true;
-        } catch (Exception e) {
-            System.out.println("Exception " + e.getMessage());
-            throw new RuntimeException(e.getMessage());
-        }
+//        String current_url = request.getRequestURL().toString();//exclude the url from token validation for image
+//        //logger for print the current url
+//        if(current_url.contains("user_ctrl/imgRead") ||
+//                current_url.contains("user_ctrl/user_login") ||
+//                current_url.contains("user_ctrl/storeuser") ){
+//            //logger should be n if con
+//            return true;
+//        }
+//        String token = request.getHeader("token");
+//        String user_id = request.getHeader("user_id");
+//        try {
+//
+//            service.checkTokenForUserId(user_id, token);//error may throw.
+//            System.out.println("Request is fine..so can go to the controller.");
+//            return true;
+//        } catch (Exception e) {
+//            System.out.println("Exception " + e.getMessage());
+//            throw new RuntimeException(e.getMessage());
+//        }
+        return true;
 
     }
 

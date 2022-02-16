@@ -89,6 +89,9 @@ public class UserController {
     @PostMapping("uploadMutliFile")
     public ResponseEntity uploadFiles(@RequestParam MultipartFile[] file,@RequestParam Integer userId){
         try{
+            /*
+                  mypic.jpg
+             */
             for(MultipartFile f:file){
                 String fileName = f.getOriginalFilename();
             String folderWithName = UPLOADED_FOLDER+fileName;
@@ -102,7 +105,12 @@ public class UserController {
         }
     }
 
-
+/*
+application/pdf
+image/jpg
+image/png
+application/xls
+ */
     //below method will return the image as jpeg
     @GetMapping(value="imgRead/{name}",produces = MediaType.IMAGE_JPEG_VALUE)
     public @ResponseBody byte[] readImg(@PathVariable String name){
@@ -181,9 +189,9 @@ public class UserController {
 
     //get all data from database
     @GetMapping("getUser")
-    public ResponseEntity getUser(@RequestHeader String token,@RequestHeader Integer user_id){
+    public ResponseEntity getUser(){
         try{
-            userService.checkTokenForUserId(user_id,token);
+           // userService.checkTokenForUserId(user_id,token);
             return ResponseEntity.ok(this.userService.getUserFromUserTable());
         }catch (Exception e){
             return  ResponseEntity.badRequest().body(e.getMessage());//response with obj
