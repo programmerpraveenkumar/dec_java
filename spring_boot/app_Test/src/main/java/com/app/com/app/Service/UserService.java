@@ -8,19 +8,23 @@ import com.app.com.app.Repo.UserRepo;
 import com.app.com.app.Request.LoginRequest;
 import com.app.com.app.Request.RegisterRequest;
 import com.app.com.app.Response.LoginResponse;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import sun.reflect.annotation.ExceptionProxy;
 
-import javax.swing.text.html.Option;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
-import java.util.Optional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import java.util.*;
 
 @Service
 public class UserService {
@@ -30,6 +34,13 @@ public class UserService {
     UserRepo userRepo;//DI for the repo
     @Autowired
     CityRepo cityRepo;//DI for the repo
+
+    @Autowired
+    Environment env;
+
+    @Autowired
+    EntityManager em;
+
     public boolean checkUser(LoginRequest req)throws Exception{
         if(req.getEmail().equals("admin@gmail.com") && req.getPassword().equals("admin")){
             return  true;
@@ -38,10 +49,33 @@ public class UserService {
         }
     }
 
-    private String getToken(String email){
-        String token = email+System.currentTimeMillis();//adding the current time
-        String res  = Base64.getEncoder().encodeToString(token.getBytes());//convert string to bytes for encode
-        return res;
+//    private String getToken(String email){
+//        String token = email+System.currentTimeMillis();//adding the current time
+//        String res  = Base64.getEncoder().encodeToString(token.getBytes());//convert string to bytes for encode
+//        return res;
+//    }
+    public String tokenGenerate(String email,String name) {
+        System.out.println(env.getProperty("JWT_TOKEN_SECRET"));
+        Calendar c= Calendar.getInstance();
+        c.add(Calendar.MINUTE,1);
+        Date date = c.getTime();
+//        Claims claim =
+        String token = Jwts.builder()
+                .setSubject(name)
+                .setIssuer(email)
+                .setExpiration(date)
+                .signWith(SignatureAlgorithm.HS512, env.getProperty("JWT_TOKEN_SECRET")).compact();
+        return token;
+    }
+    public Boolean tokenDecode(String token)throws Exception{
+        try{
+            Jws<Claims> jwt = Jwts.parser()
+                    .setSigningKey(env.getProperty("JWT_TOKEN_SECRET"))
+                    .parseClaimsJws(token);
+        }catch(Exception e){
+            throw new Exception(e.getMessage());
+        }
+        return true;
     }
 
     public boolean checkUser(String email,String password)throws Exception{
@@ -146,7 +180,7 @@ public class UserService {
         Integer user_id_int = Integer.parseInt(userId);//string to int
         //IMPL1
         //getTokenByUserId
-
+    ///implemnet the cache
         userRepo.getTokenByUserId(user_id_int,token).orElseThrow(()->new Exception("Token is not valid for this user"));
         logger.info("ok for token validation {}"+token);
         return true;
@@ -163,6 +197,11 @@ public class UserService {
 //           throw new Exception("Token is not found")
 //        }
 
+    }
+
+    public String getRole(String UserId){
+            //get role by UserId;
+        return null;
     }
 
 
@@ -263,5 +302,10 @@ public class UserService {
             cityRepo.save(city);
             return  city;
         }
+    }
+
+    public void getUserLIst(){
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<UserModel> cr = cb.createQuery(UserModel.class);
     }
 }

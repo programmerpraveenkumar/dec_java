@@ -32,6 +32,9 @@ public class TokenValidationInterceptor implements HandlerInterceptor {
 //        try {
 //
 //            service.checkTokenForUserId(user_id, token);//error may throw.
+//            //role needs to check
+//            String role  = service.getRole(user_id);
+//            ApiAccessProps.checkRole(role,current_url);//based on boolean return.check the role and throw the error.
 //            System.out.println("Request is fine..so can go to the controller.");
 //            return true;
 //        } catch (Exception e) {

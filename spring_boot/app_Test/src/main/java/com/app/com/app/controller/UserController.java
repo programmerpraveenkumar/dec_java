@@ -12,6 +12,7 @@ import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +35,8 @@ public class UserController {
     HomeService homeService;
     @Autowired
     UserService userService;
+    @Autowired
+    Environment env;
 
 
     @GetMapping("user")
@@ -140,14 +143,20 @@ application/xls
 //    }
 
     @PostMapping("user_update/{user_id}")
-    public ResponseEntity user_update(@PathVariable String user_id,@RequestBody RegisterRequest req){
+    public ResponseEntity user_update(@PathVariable String user_id,
+                                      @RequestBody RegisterRequest req,
+                                      @RequestHeader("user_id") String user_id_header){
         LoginResponse res = new LoginResponse();
         try{
+            if(user_id.equals(user_id_header)){
+                System.out.println("path variable "+user_id);
+                System.out.println("from request body "+req.getMobile_no());
+                res.setMessage("this is update user");
+                return  ResponseEntity.ok(res);//response with obj
+            }else{
+                throw new Exception("Dont have access to the api.");
+            }
 
-            System.out.println("path variable "+user_id);
-            System.out.println("from request body "+req.getMobile_no());
-            res.setMessage("this is update user");
-            return  ResponseEntity.ok(res);//response with obj
         }catch(Exception e){
             res.setMessage(e.getMessage());
             return  ResponseEntity.badRequest().body(res);
@@ -201,10 +210,11 @@ application/xls
 
     }
 
-    @GetMapping("getUser/{user_id}")
+    @GetMapping("getUserById/{user_id}")
     public ResponseEntity getUser(@PathVariable Integer user_id){
         logger.info("IN ");
         try{
+            //counry check from the props
 
             logger.info("OUT ");
             return ResponseEntity.ok(this.userService.getUserById(user_id));
@@ -271,5 +281,19 @@ application/xls
         }
     }
 
+
+    @GetMapping("getCountry")
+    public String getCountryFromProps(){
+        System.out.println(env.getProperty("COUNTRY_CODE"));
+        logger.info(env.getProperty("COUNTRY_CODE"));
+        String con_code = env.getProperty("COUNTRY_CODE");
+        if(con_code.equals("IND")){
+            return  "Rs";
+        }else if(con_code.equals("UK")){
+            return "$";
+        }else{
+            return "$";
+        }
+    }
 
 }
