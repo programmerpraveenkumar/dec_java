@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;//file upload
 
+import javax.validation.Valid;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -142,9 +143,21 @@ application/xls
 //
 //    }
 
+    @GetMapping("searchUser")
+    public ResponseEntity searchUser(@RequestParam(required = false) String name,
+                                     @RequestParam(required = false) String email){
+        try{
+            return  ResponseEntity.ok(this.userService.searchUser(name,email));
+        }catch(Exception e){
+            e.printStackTrace();
+            return  ResponseEntity.badRequest().body(new LoginResponse(e.getMessage()));
+        }
+
+    }
+
     @PostMapping("user_update/{user_id}")
     public ResponseEntity user_update(@PathVariable String user_id,
-                                      @RequestBody RegisterRequest req,
+                                      @Valid @RequestBody RegisterRequest req,
                                       @RequestHeader("user_id") String user_id_header){
         LoginResponse res = new LoginResponse();
         try{

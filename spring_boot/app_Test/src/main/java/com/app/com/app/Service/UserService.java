@@ -16,6 +16,7 @@ import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,8 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.*;
 
 @Service
@@ -119,7 +122,10 @@ public class UserService {
         userRepo.updatePictureUserId(userId,picName);
     }
 
+
+    @Cacheable(cacheNames="user", key="#id")
     public UserModel getUserById(Integer id)throws Exception{
+        System.out.println("inside get User By id");
         //optional will check for null exception.(JAVA 8)
         logger.info("in-service");
         Optional<UserModel> user = this.userRepo.findById(id);//get user by ID(PK)
@@ -303,9 +309,37 @@ public class UserService {
             return  city;
         }
     }
-
-    public void getUserLIst(){
+/*
+select * from user where  name = :name
+select * from user where   name = :name and mobile = :mobile
+select * from user where  name = :name and age >25
+select * from user where  age >25
+ */
+    public List<UserModel> searchUser(String req_name,String req_email){
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<UserModel> cr = cb.createQuery(UserModel.class);
+            //req_email.equals("")
+        Root<UserModel> userModel = cr.from(UserModel.class);//get the class from criteriaquery
+        List<Predicate> predicates = new ArrayList<>();//to search the list
+
+        if(req_name!= null && !req_name.equals("")){//if not empty and not null  add below query
+            //predicates.add(cb.equal(userModel.get("name"), req_name));//name is column name in the model.
+            predicates.add(cb.like(userModel.get("name"), req_name+"%"));
+        }
+        if(req_email != null && !req_email.equals("")){//if not empty and not null add below query
+            predicates.add(cb.equal(userModel.get("email"), req_email));//name is column name in the model.
+        }
+
+
+//        if(balance > 0){
+//            //below queyr will add only when there is balance.
+//            predicates.add(cb.lessThan(userModel.get("balance"),balance));//yyy-mm--dd
+//        }
+
+        cr.where(predicates.toArray(new Predicate[0]));//add predicates with where condition
+
+
+
+        return em.createQuery(cr).getResultList();//execute query and get the list
     }
 }

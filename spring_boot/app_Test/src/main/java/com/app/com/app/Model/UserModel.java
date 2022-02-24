@@ -60,6 +60,22 @@ public class UserModel {
     @JoinColumn(name = "user_id")
     List<MobileModel> mobile;
 
+    @ManyToMany
+    @JoinTable(
+            name = "book_author",//3 rd table name
+            joinColumns = @JoinColumn(name = "user_id"),//junction table-col
+            inverseJoinColumns = @JoinColumn(name = "book_id"))//junction table-col
+    private List<BookModel> bookModel;
+
+    public List<BookModel> getBookModel() {
+        return bookModel;
+    }
+
+    public void setBookModel(List<BookModel> bookModel) {
+        this.bookModel = bookModel;
+    }
+
+
     public Integer getBalance() {
         return balance;
     }

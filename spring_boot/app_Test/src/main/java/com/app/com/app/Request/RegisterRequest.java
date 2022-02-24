@@ -1,12 +1,26 @@
 package com.app.com.app.Request;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 public class RegisterRequest {
+    @NotNull
+    @Size(min=2, max=30)
+    @NotBlank(message = "Email is mandatory")
     String email;
+
+    @NotBlank(message = "RePassword is mandatory")
     String re_password;
+
+    @NotBlank(message = "Mobile is mandatory")
     String mobile_no;
+
+    @NotBlank(message = " Password is mandatory")
     String Password;
+
+    @NotBlank(message = "Name is mandatory")
     String name;
 
     List<String> mobileNo;
