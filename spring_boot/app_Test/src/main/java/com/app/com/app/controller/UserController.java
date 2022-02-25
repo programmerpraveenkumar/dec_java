@@ -1,6 +1,8 @@
 package com.app.com.app.controller;
 
 
+import com.app.com.app.Beans.HelloWorldConfig;
+import com.app.com.app.Configuration.AppConstants;
 import com.app.com.app.Request.LoginRequest;
 import com.app.com.app.Request.RegisterRequest;
 import com.app.com.app.Response.ErrorResponse;
@@ -8,6 +10,7 @@ import com.app.com.app.Response.LoginResponse;
 import com.app.com.app.Service.HomeService;
 import com.app.com.app.Service.UserService;
 
+import com.app.com.app.Service.UserServiceInt;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +29,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-
+//UserControllerTest
 @RestController
 @RequestMapping("user_ctrl")
 public class UserController {
@@ -34,10 +37,27 @@ public class UserController {
     String UPLOADED_FOLDER = "/Volumes/softwares/upload_folder/jan-sp-boot/";//folder path to store the  file
     @Autowired
     HomeService homeService;
+
     @Autowired
     UserService userService;
+
     @Autowired
     Environment env;
+
+    @Autowired
+    HelloWorldConfig config;
+
+    @GetMapping(AppConstants.SET_BEAN)
+    public String setBean(){
+        config.helloWorld().setMessage(AppConstants.HI);
+        return "bean value set";
+    }
+    @GetMapping("getbean")
+    public String getBean(){
+        String val = config.helloWorld().getMessage();
+        System.out.println("bean value si"+val);
+        return "from bean "+val;
+    }
 
 
     @GetMapping("user")
@@ -210,7 +230,7 @@ application/xls
     }
 
     //get all data from database
-    @GetMapping("getUser")
+    @GetMapping(AppConstants.GET_USER)
     public ResponseEntity getUser(){
         try{
            // userService.checkTokenForUserId(user_id,token);
@@ -229,7 +249,7 @@ application/xls
         try{
             //counry check from the props
 
-            logger.info("OUT ");
+            logger.info(AppConstants.OUT_LOG);
             return ResponseEntity.ok(this.userService.getUserById(user_id));
         }catch (Exception e){
             logger.info("ERROR {} ",e.getMessage());
@@ -247,6 +267,7 @@ application/xls
     public ResponseEntity user_register(@RequestBody List<RegisterRequest> reqList){
         LoginResponse res = new LoginResponse();
         try{
+            logger.info(AppConstants.OUT_LOG);
             //iterating the multiple data
             for(RegisterRequest req:reqList){
                 //can get single object;
@@ -262,6 +283,7 @@ application/xls
     }
     @PostMapping("logout/{user_id}")
     public ResponseEntity logout(@PathVariable Integer user_id ){
+        logger.info(AppConstants.OUT_LOG);
         //as this controller is for logout,sending the token as empty.
         userService.userUpdateToken("",user_id);
         return ResponseEntity.ok("logout success");
@@ -271,6 +293,7 @@ application/xls
     public ResponseEntity storeUser(@RequestBody RegisterRequest req){
         LoginResponse res = new LoginResponse();
         try{
+            logger.info(AppConstants.OUT_LOG);
             this.userService.storeUser(req);
             res.setMessage("inserted successfully");
             return ResponseEntity.ok(res);//success reponse with 200 status code

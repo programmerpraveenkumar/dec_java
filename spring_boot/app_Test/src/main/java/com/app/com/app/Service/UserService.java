@@ -1,5 +1,6 @@
 package com.app.com.app.Service;
 
+import com.app.com.app.Configuration.AppConstants;
 import com.app.com.app.Model.CityModel;
 import com.app.com.app.Model.MobileModel;
 import com.app.com.app.Model.UserModel;
@@ -29,8 +30,9 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.*;
 
+//UserServiceTest
 @Service
-public class UserService {
+public class UserService implements UserServiceInt {
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
@@ -58,7 +60,7 @@ public class UserService {
 //        return res;
 //    }
     public String tokenGenerate(String email,String name) {
-        System.out.println(env.getProperty("JWT_TOKEN_SECRET"));
+        System.out.println(env.getProperty(AppConstants.JWT_TOKEN_SECRET));
         Calendar c= Calendar.getInstance();
         c.add(Calendar.MINUTE,1);
         Date date = c.getTime();
@@ -67,13 +69,13 @@ public class UserService {
                 .setSubject(name)
                 .setIssuer(email)
                 .setExpiration(date)
-                .signWith(SignatureAlgorithm.HS512, env.getProperty("JWT_TOKEN_SECRET")).compact();
+                .signWith(SignatureAlgorithm.HS512, env.getProperty(AppConstants.JWT_TOKEN_SECRET)).compact();
         return token;
     }
     public Boolean tokenDecode(String token)throws Exception{
         try{
             Jws<Claims> jwt = Jwts.parser()
-                    .setSigningKey(env.getProperty("JWT_TOKEN_SECRET"))
+                    .setSigningKey(env.getProperty(AppConstants.JWT_TOKEN_SECRET))
                     .parseClaimsJws(token);
         }catch(Exception e){
             throw new Exception(e.getMessage());
@@ -90,8 +92,10 @@ public class UserService {
     }
 
     public List<UserModel> getUserFromUserTable(){
+        System.out.println("in service");
         //below return list from usertable
        List<UserModel> userList = this.userRepo.findAll();//get all the data from the table.
+        System.out.println("out service");
         return userList;
     }
 
@@ -315,6 +319,7 @@ select * from user where   name = :name and mobile = :mobile
 select * from user where  name = :name and age >25
 select * from user where  age >25
  */
+@Override
     public List<UserModel> searchUser(String req_name,String req_email){
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<UserModel> cr = cb.createQuery(UserModel.class);

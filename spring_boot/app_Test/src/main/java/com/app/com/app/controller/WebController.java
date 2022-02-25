@@ -1,6 +1,8 @@
 package com.app.com.app.controller;
 
 
+import com.app.com.app.Beans.HelloWorldConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import sun.misc.Contended;
@@ -8,6 +10,7 @@ import sun.misc.Contended;
 //can be used in browser
 @Controller
 public class WebController {
+
     @GetMapping("home")
     public String getSamplePage(){
         System.out.println("this is sample home page");
