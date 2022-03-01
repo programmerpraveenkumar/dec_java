@@ -1,0 +1,114 @@
+<html>
+    <!--header is used to include the external libraries like css or html  -->
+    <head>
+        <title>sfdgsdfgsdfg page</title>
+        <style>
+            select{
+                background-color: red;
+                color: #ffff;
+                font-size: 25px;
+            }
+            div{
+                background-color: blue;
+            }
+            input{
+                background-color: #cdfa00;
+                color: #000;
+                font-size: 25px;
+            }
+            .red-color{
+                color: red;
+                background-color: #000;
+            }
+            .title{
+                font-size: 50px;
+                color: #f9f6f6;
+                background-color: #000;
+                height:150px ;
+                width: 25%;
+            }
+            #date_title{
+                font-size: 25px;
+                color: #97d816;
+                background-color: #000;
+            }
+        </style>
+    </head>
+
+    <!-- to show content in web page -->
+    <body>
+        <!-- 
+            div
+            section
+            header
+            footer
+         -->
+         <!--
+             block can have another block element or inline elements.             
+            inline elements does not hold the block elements.
+            inline elements can have inline elements
+         -->
+         <div class="title">Welcome to css</div>
+         <input type="text">
+         <input type="password">
+            <div>
+                <input name="gender" type="radio">Male
+                <input name="gender" type="radio">Fe-Male
+            </div>
+         <input name="city" type="checkbox">Chennai
+         <input name="city"type="checkbox">Trichy
+         <input name="city" type="checkbox">madurai
+         <input type="button" value="Click me">
+         <button>Click me</button>
+         <!-- to send the data to server
+            action="URL of the server"
+            method = GET | POST
+        -->
+         <form class="red-color">
+             <input type="text" name="username"/>
+             <input id="sub_btn" id type="submit"/>
+         </form>
+         <div>
+             <span id="date_title" title="hi how are you">Select DOB</span>
+              <input type="date">
+         </div>
+         
+         <select>
+             <option>Select value</option>
+             <option>one</option>
+             <option>Two</option>
+             <option>Three</option>
+             <option>Four</option>
+             <option>Five</option>
+
+         </select>
+         <!-- new tab will open for google.com -->
+         <a target="__parent" href="http://google.com">CLick to go to google</a>
+         <ul class="red-color">
+             <li>test</li>
+             <li>test</li>
+             <li>test</li>
+             <li>test</li>
+        </ul>
+        <ol>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+       </ol>
+<!-- 
+    p->text
+    a->navigation<a href="">Click to goole</a>
+    b
+    i
+    ul
+    li
+    h1 to h6
+    img ->src alt
+    <
+
+ -->
+ <div class="title">End to css</div>
+
+    </body>
+</html>

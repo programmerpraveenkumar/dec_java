@@ -1,0 +1,49 @@
+css is cascading stylesheet
+Css can be applied in 3 ways
+Responsive web design:
+
+internal->can be defined in head tag
+external->can be defined in head tag
+inline->can be deinfed in the element itself
+
+In 3 ways can apply css style to the elements;
+usigng tag name.
+using id(should be unique,can be access using #)
+using class(it can be duplicate,can be access using .)
+measure:px,%
+color(hex code or rgb value)
+    text color for the element
+background-color
+    backgroud-color for the elemen
+font-size
+    text size for the element
+width
+    widht of the elementz
+
+
+height
+    height of the element
+float
+    move the element to right or left
+
+
+overflow
+    when content is overflow morethan mentioned height or width.
+
+text-align:
+display
+    hide or show the element
+border
+    add border color and stype aroud the element
+border-radius
+    radius around the elements
+text-decoration
+    to add underline or remove underline
+
+
+
+padding
+margin
+position
+
+opacity
