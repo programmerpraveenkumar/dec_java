@@ -19,31 +19,69 @@ font-size
     text size for the element
 width
     widht of the elementz
-
-
 height
     height of the element
-float
-    move the element to right or left
-
-
 overflow
     when content is overflow morethan mentioned height or width.
-
+        hidden->hide teh overflow content
+        auto->add the scroll bar
+                if contnet overflowas add the scroll bar or no need to scroll
 text-align:
-display
-    hide or show the element
+    center,left,right
 border
     add border color and stype aroud the element
+    1.sizeofborder
+    2.border_type
+    3.colorBorder
+
 border-radius
     radius around the elements
 text-decoration
     to add underline or remove underline
 
 
+display
+    hide or show the element
+    none->to hide the element
+    block->to show the element
 
-padding
-margin
-position
+opacity->transparency
+0.1.0.2...0.9,1
+float
+    move the element to right or left
+margin->create a space around the element without background color;
+margin:10px;//will apply for all the sides.
+margin:10px 5px;
+margin:10px 5px 10px;
+margin:10px 5px 10px 5px;
+ 
 
-opacity
+margin-top
+margin-bottom
+margin-right
+margin-left
+
+
+padding->create a space around the element with background color;
+padding:10px;//will apply for all the sides.
+padding:10px 5px;
+padding:10px 5px 10px;
+padding:10px 5px 10px 5px
+padding-top
+padding-bottom
+padding-right
+padding-left
+
+
+
+position->fixed,relative,absolute
+
+position->fixed;
+top|bottom:measure
+right|left
+
+
+
+position->relative,absolute
+connection between overlow and float 
+parent and child elemnets with css
