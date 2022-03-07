@@ -1,0 +1,48 @@
+No Data type  in java script 
+	variable can be declared using 3 ways
+		
+		1.var->global varible
+		2.let->local vairale(with in curly braces)
+		3.const->constant vairble(value will not change after assign)
+
+sys.out.print()->console.log();
+
+public void | return method_Name(){}
+
+js can start with methods 
+function method_name(){
+    
+}
+function method_name(){
+    return "anything";    
+}
+function add(a,b){
+    return a+b;    
+}
+
+ARRAY:(index,object)
+    to store the mulitpele values
+index array:
+var name = [];
+name[]="test";
+name[]="test1";
+name[]="test2";
+name[]="test3";
+
+
+Events 
+	btton click
+	input type
+	mouse click 
+
+Data binding (display the data in html using js)
+	innerHTML->div,span,h1,a,(except input tags)
+	value->for all input tags and select.
+Form validation 
+http calls
+	get
+	post
+fetch()->useful for get the api response from the server(spring,.net,php)
+
+date methods
+string methods

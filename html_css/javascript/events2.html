@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <script>
+                function replaceH1Content(){
+                    //need to get the value from textbox.
+                    let input_val  = document.getElementById("name_input").value//get val from input box
+                    //document.getElementById("sample_heading").innerHTML = "update in javascipt"
+                    if(input_val == "" || input_val == undefined){
+                        document.getElementById("sample_heading").innerHTML = "Error::Please Enter in the textbox";//assign the input box value to the h1 tag        
+                    }else{
+                        document.getElementById("sample_heading").innerHTML = input_val;//assign the input box value to the h1 tag
+                    }
+                    
+                    
+                }
+        </script>
+    </head>
+    <body>
+      <h1 id="sample_heading">Type something and click the button</h1>
+        
+        <input type="text" id="name_input" onkeypress="printConsole()" placeholder="Enter Name">
+        <button onclick="replaceH1Content()">Click Me</button>        
+    </body>
+</html>

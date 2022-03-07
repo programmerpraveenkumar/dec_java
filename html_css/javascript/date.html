@@ -1,0 +1,27 @@
+<html>
+<head>
+
+    <script>
+
+        //new creating the object
+        //Date()
+        var d = new Date();//creating the object.
+        console.log(d.getFullYear());
+        console.log(d.getMonth());
+        console.log(d.getDate());
+        console.log(d.getHours()+":"+d.getMinutes()+":"+d.getSeconds());
+        document.getElementById("date_title").innerHTML = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+
+    </script>
+</head>
+
+<body>
+    
+<h1 id="date_title">Current time:10:23 </h1>
+</body>
+<script>
+   
+    document.getElementById("date_title").innerHTML = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+
+</script>
+</html>

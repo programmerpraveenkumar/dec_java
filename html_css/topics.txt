@@ -80,8 +80,17 @@ position->fixed;
 top|bottom:measure
 right|left
 
+fixed->always controlled by browser.
+absolute
+    1.->always controlled by browser.
+    2.it scroll happens..will also move.
+    3.if any parent element has position.then it will controlled by parent.
 
 
 position->relative,absolute
-connection between overlow and float 
+
 parent and child elemnets with css
+    connection between overlow and float 
+        Parent element will not have height when all the children elements becomes float..
+        :hover
+        :focus

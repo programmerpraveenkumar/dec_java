@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <script>
+            /*  
+            register form
+                1.name,email,passsowrd,re_password,
+                2.passsowrd == re_password,
+                3.ok success.
+            */
+                function formValidation(){
+                    //need to get the value from textbox.
+                    let email_txt  = document.getElementById("email").value//get val from input box
+                    let pwd_txt  = document.getElementById("pwd").value//get val from input box
+                    if(email_txt == "" || email_txt == undefined){
+                        document.getElementById("error_text").innerHTML = "Error::Please Enter Email";//assign the input box value to the h1 tag        
+                    }else if(pwd_txt == "" || pwd_txt == undefined){
+                        document.getElementById("error_text").innerHTML = "Error::Please Enter Password";//assign the input box value to the h1 tag        
+                    }else{
+                        document.getElementById("error_text").innerHTML = "ok success.";
+                        //http call to server
+                    }
+                }
+        </script>
+    </head>
+    <body>
+        <h1>Login form</h1>
+        <div>
+            <input type="text" id="email"  placeholder="Enter email"/>
+        </div>
+        <div>
+            <input type="text" id="pwd"  placeholder="Enter Password"/>
+        </div>
+        <div>
+            <button onclick="formValidation()">Login</button>        
+
+        </div>
+        
+        <h1 id="error_text"></h1>
+    </body>
+</html>

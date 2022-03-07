@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <script>
+
+            function printName(){
+                console.log("print the name");
+            }
+            function printConsole(){
+                console.log("this method is calling..");
+            }
+            function updateHtml(){
+                //this metho will be called while button click
+                //using innerHTML data will be bind to div element
+                document.getElementById("sample_name").innerHTML = "updaed in javascript";
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+
+            <div id="sample_name"></div>
+            <button onclick="updateHtml()">Click to update in javascript</button>
+        </div>
+        
+        <input type="text" onkeypress="printConsole()" placeholder="Enter Name">
+        <button onclick="printName()">Click Me</button>        
+    </body>
+</html>

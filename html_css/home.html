@@ -71,13 +71,40 @@
                 text-decoration: none;
             }
             .clock{
+
                 position: fixed;
+                /* from top of the browser  */
                 top:50px;
+                /* from right side of the browser  */
                 right: 50px;;
                 background-color: red;
                 padding: 10px;
                 color: #fff;
                 border-radius: 10px;
+            }
+            .user_name{
+                position:absolute;
+                /* from top of the browser  */
+                top:50px;
+                /* from right side of the browser  */
+                right: 50px;;
+            }
+            .username_wrapper{
+                position: relative;
+            }
+            .left{
+                float: left;
+            }
+            .right{
+                float: right;
+            }
+            .bg-color{
+                background-color: #97d816;
+                overflow: hidden;
+            }
+            .round-shape:hover{
+                    background-color: #000;
+                    cursor: pointer;
             }
         </style>
     </head>
@@ -119,7 +146,11 @@
              <span id="date_title" title="hi how are you">Select DOB</span>
               <input type="date">
          </div>
-         
+         <div class="username_wrapper">
+            <!-- user-name wrpper has position relatvie -->
+            <div class="user_name">Welcome User</div>
+            
+        </div>
          <select>
              <option>Select value</option>
              <option>one</option>
@@ -169,5 +200,17 @@
  <div class="title">End to css</div>
 <div class="round-shape"></div>
 <div class="clock">Time is:10:32</div>
-    </body>
+
+<div class="bg-color">
+    <div class="left">
+        im the left content
+    </div>
+    <div class="right">
+        im the right content
+    </div>
+</div>
+
+
+
+</body>
 </html>
