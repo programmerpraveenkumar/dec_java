@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script>
+
+            function getHTTPcall(){
+                let pageNo = document.getElementById("pageNo").value;
+                console.log("current page No "+pageNo);
+                //get the data from the api using GET method
+            	fetch("https://reqres.in/api/users?page="+pageNo)
+                .then(ser_res=>ser_res.json())//parse the server response
+                .then(json_response=>{//to get the result from the previous method
+                        document.getElementById("response").innerHTML = JSON.stringify(json_response);//json to string object
+                })
+            }
+          
+            
+           
+        </script>
+    </head>
+    <body>       
+        <select id="pageNo">
+            <option value="1">Page 1</option>
+            <option value="2">Page 2</option>
+            <option value="3">Page 3</option>
+
+            <option value="4">Page 4</option>
+        </select>
+        <button onclick="getHTTPcall()">Get HTTP call</button>  
+        <div id="response">   
+        </div>   
+    </body>
+</html>

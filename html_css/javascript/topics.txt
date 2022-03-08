@@ -43,6 +43,13 @@ http calls
 	get
 	post
 fetch()->useful for get the api response from the server(spring,.net,php)
+get
+post
+fetch(url)->getmethod 
+fetch(url,{method:"post",body:req_body})->post with arguments 
 
 date methods
 string methods
+
+JSON.striniy()->conver js obejct to string object(server obecjt)
+JSON.parse()->string object to js Object

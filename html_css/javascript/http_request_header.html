@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <script>
+
+            function postHTTPcall(){
+                let name =document.getElementById("person_name").value;
+                let person_job =document.getElementById("person_job").value;
+                let req_data = {
+                   "name": name,
+                    "job": person_job
+                }
+                //get the data from the api using GET method
+            	fetch("https://reqres.in/api/users",{
+                    method:"POST",
+                    body:JSON.stringify(req_data),
+                    headers:{
+                        "token":"some random value",
+                        "user_id":"1"
+                    }
+                })
+                .then(ser_res=>ser_res.json())//parse the server response
+                .then(json_response=>{//to get the result from the previous method
+                        document.getElementById("response").innerHTML = JSON.stringify(json_response);//json to string object
+                })
+            }
+            function postErrorHTTPcall(){
+                
+            	fetch("https://reqres.in/api/users/23")
+                .then(ser_res=>ser_res.json())//parse the server response
+                .then(json_response=>{//to get the result from the previous method
+                        console.log("respnose ");
+                }).catch(err=>{
+                    alert(err);//to show the error if 400 or any erro comes from server
+                })
+            }
+       /*
+       
+       */
+            
+           
+        </script>
+    </head>
+    <body>       
+        <input type="text" id="person_name" placeholder="Enter Username">
+        <input type="text" id="person_job" placeholder="Enter Job">
+        <button onclick="postHTTPcall()">Get HTTP call</button>  
+        <div id="response">   
+        </div>   
+        <input type="button" onclick="postErrorHTTPcall()" value="CLick to get Error">
+    </body>
+</html>
