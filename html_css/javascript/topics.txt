@@ -53,3 +53,29 @@ string methods
 
 JSON.striniy()->conver js obejct to string object(server obecjt)
 JSON.parse()->string object to js Object
+
+ Storage
+    sessionStoage:
+        temp storage
+        data will be deleted after user's closes the tab or browser
+        Ex:banking website,one time login app
+        sessionStorage.setItem("key","as;dfkja;sdfkj;kjasdfj");//storethe value in sessionstorage
+        sessionStorage.getItem("key");//to get the value
+		sessionStoage.removeItem("key");//logout
+
+    Localstorage:
+        peramanent storeage
+        data will not deleted after user's close the tab or browser,
+        but if user delete the brwoser history or uninstall the browser data will be delete.
+        Ex:gmail,social media,Remember Me app
+        localStorage.setItem("token","as;dfkja;sdfkj;kjasdfj");//storethe value in localstorage
+        localStorage.getItem("key");//to get the value
+		localStoage.removeItem("key");//logout
+
+
+oops:
+string methods
+    length of the word
+    split the word
+array methods
+typescript

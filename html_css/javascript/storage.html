@@ -1,0 +1,42 @@
+<html>
+<head>
+<script>
+    /*
+    Storage
+    sessionStoage:
+        temp storage
+        data will be deleted after user's closes the tab or browser
+        Ex:banking website,one time login app
+        sessionStorage.setItem("key","as;dfkja;sdfkj;kjasdfj");//storethe value in sessionstorage
+        sessionStorage.getItem("key");//to get the value
+
+    Localstorage:
+        peramanent storeage
+        data will not deleted after user's close the tab or browser,
+        but if user delete the brwoser history or uninstall the browser data will be delete.
+        Ex:gmail,social media,Remember Me app
+        localStorage.setItem("token","as;dfkja;sdfkj;kjasdfj");//storethe value in localstorage
+        localStorage.getItem("key");//to get the value
+    */
+   function setSession(){
+        sessionStorage.setItem("token","sometoken");//store the token
+   }
+   function getSession(){
+
+        sessionStorage.getItem("token");//get the tokne
+   }
+   function setLocal(){
+
+   }
+   function getLocal(){
+
+   }
+</script>
+    
+
+
+</head>
+<body>
+    
+</body>
+</html>

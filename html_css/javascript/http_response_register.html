@@ -16,6 +16,14 @@
                 })
                 .then(ser_res=>ser_res.json())//parse the server response
                 .then(json_response=>{//to get the result from the previous method
+                    /*{
+                            "id":"45,
+                            "token":"asdfasdf"
+                        }
+                        */
+                        //json_response['token']
+                        
+                        sessionStorage.setItem("token",json_response['token']);//token will be stored in the sessiostorege.
                         document.getElementById("response").innerHTML = JSON.stringify(json_response);//json to string object
                 })
             }

@@ -9,12 +9,13 @@
                    "name": name,
                     "job": person_job
                 }
+                let token = sessionStorage.getItem("token");
                 //get the data from the api using GET method
             	fetch("https://reqres.in/api/users",{
                     method:"POST",
                     body:JSON.stringify(req_data),
                     headers:{
-                        "token":"some random value",
+                        "token":token,
                         "user_id":"1"
                     }
                 })
