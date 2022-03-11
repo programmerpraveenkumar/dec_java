@@ -94,3 +94,9 @@ parent and child elemnets with css
         Parent element will not have height when all the children elements becomes float..
         :hover
         :focus
+
+        Html css javascript 
+Javascript (Typescript )
+
+Typescript ->nodejs->javascript
+Java->jdk->byte code

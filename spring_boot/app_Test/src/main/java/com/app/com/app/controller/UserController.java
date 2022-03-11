@@ -21,7 +21,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;//file upload
 
-import javax.validation.Valid;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -177,7 +177,7 @@ application/xls
 
     @PostMapping("user_update/{user_id}")
     public ResponseEntity user_update(@PathVariable String user_id,
-                                      @Valid @RequestBody RegisterRequest req,
+                                      @RequestBody RegisterRequest req,
                                       @RequestHeader("user_id") String user_id_header){
         LoginResponse res = new LoginResponse();
         try{

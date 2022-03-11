@@ -174,7 +174,7 @@ public class UserService implements UserServiceInt {
 
     }
     public Boolean checkTokenForUserId(String userId,String token)throws Exception{
-
+        System.out.println("in service token validation");
         if(token == null || token.equals("")){
             logger.info("token is null {}"+token);
             System.out.println("token is null..so it will not go to the controller.");

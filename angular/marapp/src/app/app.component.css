@@ -1,0 +1,8 @@
+.text-input{
+    width: 50%;
+    height: 50px;
+    color: rgb(231, 88, 21);
+}
+.text-input.btn{
+    color: black;
+}

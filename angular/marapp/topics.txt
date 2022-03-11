@@ -1,0 +1,41 @@
+home->header+content+footer
+about->header+content+footer
+conctact->header+content+footer
+
+home
+about
+contact
+header Component
+footer componet 
+
+
+
+routing:
+
+App Component default component wch exists in the project creation.
+Component 
+    ng generate component {component_name}
+    ng g c {componet_name}
+
+Each component will have 4 files:
+    html  ->for html tags 
+    css->for css styles
+    ts->typescript or javascrit
+    spec.ts-unit testing codes
+
+
+
+Routing 
+    navgition between the components
+    1.app.routng.module.ts -> need to mention the routing configuration
+    2.IN app.component.html -->enable the <router-outlet></router-outlet>
+Services
+http get and post
+Directives
+Pipes
+Data binding
+Token validation and sending header in http
+Multi modules 
+
+
+

@@ -1,0 +1,310 @@
+[
+    {
+        "id": 1,
+        "password": "password",
+        "email": "test@gmail.com",
+        "name": "test",
+        "dob": "1996-05-25",
+        "picture": null,
+        "balance": 1500,
+        "insert_date": "2021-12-30 10:27:20",
+        "city": {
+            "id": 1,
+            "name": "chennai2"
+        },
+        "mobile": [
+            {
+                "id": 1,
+                "mobile_no": "23423423",
+                "network": "jio",
+                "user_id": 1
+            },
+            {
+                "id": 2,
+                "mobile_no": "9769698",
+                "network": "airtel",
+                "user_id": 1
+            }
+        ],
+        "bookModel": [
+            {
+                "id": 1,
+                "name": "html"
+            },
+            {
+                "id": 2,
+                "name": "java"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "password": "testpassword",
+        "email": "test1@gmail.com",
+        "name": null,
+        "dob": "1998-08-10",
+        "picture": "Screenshot_1587111003.png",
+        "balance": 3000,
+        "insert_date": "2021-12-30 10:34:25",
+        "city": {
+            "id": 5,
+            "name": "banglore"
+        },
+        "mobile": [
+            {
+                "id": 3,
+                "mobile_no": "0070708",
+                "network": "jio",
+                "user_id": 5
+            },
+            {
+                "id": 4,
+                "mobile_no": "09809809",
+                "network": "vodafone",
+                "user_id": 5
+            }
+        ],
+        "bookModel": [
+            {
+                "id": 1,
+                "name": "html"
+            },
+            {
+                "id": 3,
+                "name": "angular"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "password": "test",
+        "email": "test3@gmail.com",
+        "name": null,
+        "dob": "2000-09-10",
+        "picture": null,
+        "balance": 420,
+        "insert_date": "2022-01-03 10:34:57",
+        "city": {
+            "id": 1,
+            "name": "chennai2"
+        },
+        "mobile": [
+            {
+                "id": 5,
+                "mobile_no": "087097",
+                "network": "jio",
+                "user_id": 6
+            }
+        ],
+        "bookModel": [
+            {
+                "id": 2,
+                "name": "java"
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "password": null,
+        "email": "testfk@gmail.com",
+        "name": "testfk",
+        "dob": null,
+        "picture": null,
+        "balance": 1500,
+        "insert_date": "2022-01-03 10:48:00",
+        "city": {
+            "id": 3,
+            "name": "coimbatore"
+        },
+        "mobile": [],
+        "bookModel": [
+            {
+                "id": 2,
+                "name": "java"
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "password": "testdobpwd",
+        "email": "testdob@gmail.com",
+        "name": "testdob",
+        "dob": "1995-05-25",
+        "picture": null,
+        "balance": 4520,
+        "insert_date": "2022-01-03 10:57:56",
+        "city": null,
+        "mobile": [],
+        "bookModel": [
+            {
+                "id": 2,
+                "name": "java"
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "password": "testdobpwd",
+        "email": "testdob1@gmail.com",
+        "name": "testdob",
+        "dob": "2022-01-03",
+        "picture": "Screenshot_1573665442.png",
+        "balance": 7896,
+        "insert_date": "2022-01-03 11:00:42",
+        "city": null,
+        "mobile": [],
+        "bookModel": []
+    },
+    {
+        "id": 12,
+        "password": "sample password",
+        "email": "email",
+        "name": "testname",
+        "dob": null,
+        "picture": null,
+        "balance": 45454,
+        "insert_date": "2022-01-10 11:06:02",
+        "city": null,
+        "mobile": [],
+        "bookModel": []
+    },
+    {
+        "id": 13,
+        "password": null,
+        "email": "spring@gmail.com",
+        "name": "spring db",
+        "dob": null,
+        "picture": null,
+        "balance": 100,
+        "insert_date": "2022-01-10 11:07:37",
+        "city": null,
+        "mobile": [],
+        "bookModel": []
+    },
+    {
+        "id": 16,
+        "password": "test1234",
+        "email": "spring234@gmail.com",
+        "name": "springasd db",
+        "dob": null,
+        "picture": null,
+        "balance": 500,
+        "insert_date": "2022-01-10 11:11:20",
+        "city": null,
+        "mobile": [],
+        "bookModel": []
+    },
+    {
+        "id": 17,
+        "password": "servlettestpassowrd",
+        "email": "servlettest@gmail.coim",
+        "name": "servlettest",
+        "dob": null,
+        "picture": null,
+        "balance": null,
+        "insert_date": "2022-01-16 18:04:21",
+        "city": null,
+        "mobile": [],
+        "bookModel": []
+    },
+    {
+        "id": 18,
+        "password": "tes1",
+        "email": "tes1",
+        "name": "tes1",
+        "dob": null,
+        "picture": null,
+        "balance": null,
+        "insert_date": "2022-01-24 10:42:10",
+        "city": null,
+        "mobile": [],
+        "bookModel": []
+    },
+    {
+        "id": 20,
+        "password": "tes1",
+        "email": "tes1@test.com",
+        "name": "tes1",
+        "dob": null,
+        "picture": null,
+        "balance": null,
+        "insert_date": "2022-01-24 10:42:37",
+        "city": null,
+        "mobile": [],
+        "bookModel": []
+    },
+    {
+        "id": 21,
+        "password": "tes1",
+        "email": "tes3@trer.ccom",
+        "name": "test2",
+        "dob": null,
+        "picture": null,
+        "balance": null,
+        "insert_date": "2022-01-24 10:42:37",
+        "city": null,
+        "mobile": [],
+        "bookModel": []
+    },
+    {
+        "id": 22,
+        "password": "tes1",
+        "email": "tes1@dfasd.cocm",
+        "name": "test3",
+        "dob": null,
+        "picture": null,
+        "balance": null,
+        "insert_date": "2022-01-24 10:42:37",
+        "city": null,
+        "mobile": [],
+        "bookModel": []
+    },
+    {
+        "id": 23,
+        "password": "feb-15",
+        "email": "feb-15@gmail.com",
+        "name": "feb-15",
+        "dob": null,
+        "picture": null,
+        "balance": null,
+        "insert_date": "2022-02-15 10:15:17",
+        "city": {
+            "id": 1,
+            "name": "chennai2"
+        },
+        "mobile": [],
+        "bookModel": []
+    },
+    {
+        "id": 24,
+        "password": "feb-151",
+        "email": "feb-151@gmail.com",
+        "name": "feb-151",
+        "dob": null,
+        "picture": null,
+        "balance": null,
+        "insert_date": "2022-02-15 10:15:55",
+        "city": {
+            "id": 4,
+            "name": "trichy"
+        },
+        "mobile": [],
+        "bookModel": []
+    },
+    {
+        "id": 25,
+        "password": "feb-152",
+        "email": "feb-152@gmail.com",
+        "name": "feb-152",
+        "dob": null,
+        "picture": null,
+        "balance": null,
+        "insert_date": "2022-02-15 10:30:56",
+        "city": {
+            "id": 11,
+            "name": "tanjore"
+        },
+        "mobile": [],
+        "bookModel": []
+    }
+]

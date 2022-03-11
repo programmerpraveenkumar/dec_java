@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <script>
+
+            function postHTTPcall(){
+                let name =document.getElementById("person_name").value;
+                let person_job =document.getElementById("person_job").value;
+                let req_data = {
+                   "name": name,
+                    "job": person_job
+                }
+                let token = sessionStorage.getItem("token");
+                //get the data from the api using GET method
+            	fetch("https://reqres.in/api/users",{
+                    method:"POST",
+                    body:JSON.stringify(req_data),
+                    headers:{
+                        "token":token,
+                        "user_id":"1"
+                    }
+                })
+                .then(ser_res=>ser_res.json())//parse the server response
+                .then(json_response=>{//to get the result from the previous method
+                        document.getElementById("response").innerHTML = JSON.stringify(json_response);//json to string object
+                })
+            }
+            function postErrorHTTPcall(){
+                
+            	fetch("ttps://reqres.in/api/users")
+                .then(ser_res=>ser_res.json())//parse the server response
+                .then(json_response=>{//to get the result from the previous method
+                        console.log("respnose ");
+                }).catch(err=>{
+                    alert(err);//to show the error if 400 or any erro comes from server
+                })
+            }
+
+            function postHTTPOwncall(){
+                fetch('http://localhost:8080/user_ctrl/getUser', {
+                    method: 'GET', 
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'token':"sample token"
+                    }                    
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                    console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                    console.error('Error:', error);
+                });
+                // //get the data from the api using GET method
+            	// fetch("http://localhost:8080/user_ctrl/getUser",{
+                //     method:"GET",
+                //     headers: {
+                //          'Content-Type': 'application/json',
+                //     }
+                // })
+                // .then(ser_res=>ser_res.json())//parse the server response
+                // .then(json_response=>{//to get the result from the previous method
+                //         document.getElementById("response").innerHTML = JSON.stringify(json_response);//json to string object
+                // })
+            }
+       /*
+       
+       */
+            
+           
+        </script>
+    </head>
+    <body>       
+        <input type="text" id="person_name" placeholder="Enter Username">
+        <input type="text" id="person_job" placeholder="Enter Job">
+        <button onclick="postHTTPcall()">Get HTTP call</button>  
+        <div id="response">   
+        </div>   
+        <input type="button" onclick="postErrorHTTPcall()" value="CLick to get Error">
+        <input type="button" onclick="postHTTPOwncall()" value="CLick to local server">
+    </body>
+</html>
