@@ -71,6 +71,26 @@ export class HomeComponent implements OnInit {
    
    
   }
+  postHttpLoginCall(){
+    let req_header =new HttpHeaders(
+      {
+        "Content-type":"application/json",       
+      }
+    );
+    let postArgs = {
+      "email": this.login_email,//to access the variable need to use `this`
+      "password": this.login_password
+    }
+    //post request with object
+    this.http.post("spring_boot_login_api_url",postArgs,{headers:req_header})
+    .subscribe(res=>{
+      console.log(res);
+      localStorage.setItem("token",res['token']);
+      localStorage.setItem("user_id",res['user_id']);
+    })
+   
+   
+  }
 
 
 }
