@@ -29,13 +29,38 @@ Routing
     navgition between the components
     1.app.routng.module.ts -> need to mention the routing configuration
     2.IN app.component.html -->enable the <router-outlet></router-outlet>
+
+
+Data binding (display the ts vairable in html)
+	one way Data binding
+		ts->html(from ts to html)
+	two way data binding 
+		ts<->html
+    Only below element can able to edit or change by user in the html page.
+    So only for below elemtns can have two way data binding.
+    Input,textarea,select,radio,checkbox
+    ngModel->Using this library..two way data binding can be enabled.
+            1.This ngModel can be inherited from FOrmsModules in app.module.ts
+            2.adding [(ngModel)]="varible_name"
+
+
+
 Services
+    No UI functionality.only TS is exist.
+    To reuse the business logic in across the project.(token storage, token access,token validation)
+    Constructor DI->This Object can be created in the constructor in the componet
+    ng g s serviceName->create the service in the ng project.
+
+
 http get and post
+    1.add HTTPCLientModule in app.moudule.ts
+    2.Create object in HttpClient in component.
 Directives
 Pipes
 Data binding
 Token validation and sending header in http
 Multi modules 
+promise and observable
 
 
 

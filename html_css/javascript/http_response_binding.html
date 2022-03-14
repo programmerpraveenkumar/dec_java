@@ -3,14 +3,21 @@
         <script>
 
             function getHTTPcall(){
-                let pageNo = document.getElementById("pageNo").value;
-                console.log("current page No "+pageNo);
-                //get the data from the api using GET method
-            	fetch("https://reqres.in/api/users?page="+pageNo)
+                //get the data from server.->API integration
+                fetch("https://reqres.in/api/users?page=1")
                 .then(ser_res=>ser_res.json())//parse the server response
                 .then(json_response=>{//to get the result from the previous method
                         document.getElementById("response").innerHTML = JSON.stringify(json_response);//json to string object
                 })
+                // let pageNo = document.getElementById("pageNo").value;
+                // console.log("current page No "+pageNo);
+                // //get the data from the api using GET method
+            	// fetch("https://reqres.in/api/users?page="+pageNo)
+                // .then(ser_res=>ser_res.json())//parse the server response
+                // .then(json_response=>{//to get the result from the previous method
+                //         document.getElementById("response").innerHTML = JSON.stringify(json_response);//json to string object
+                // })
+               
             }
           
             
