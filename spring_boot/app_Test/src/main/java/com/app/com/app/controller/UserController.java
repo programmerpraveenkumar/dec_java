@@ -58,6 +58,15 @@ public class UserController {
         System.out.println("bean value si"+val);
         return "from bean "+val;
     }
+    @GetMapping("getPageCount")
+    public ResponseEntity<?> getUserName(){
+        /*
+            call the service method to get the total count from the new_table
+            109 ->has ato come from the database call
+         */
+        int pageCount = 109;
+        return ResponseEntity.ok(new LoginResponse("109"));
+    }
 
 
     @GetMapping("user")
@@ -174,7 +183,16 @@ application/xls
         }
 
     }
-
+    @GetMapping("getUserByPage")
+    public ResponseEntity searchUser(){
+        try{
+            int pageNo = 1;
+            return  ResponseEntity.ok(this.userService.searchUser1(pageNo));
+        }catch(Exception e){
+            e.printStackTrace();
+            return  ResponseEntity.badRequest().body(new LoginResponse(e.getMessage()));
+        }
+    }
     @PostMapping("user_update/{user_id}")
     public ResponseEntity user_update(@PathVariable String user_id,
                                       @RequestBody RegisterRequest req,

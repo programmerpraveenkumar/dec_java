@@ -1,14 +1,34 @@
+
+<h1>{{name}}</h1>
 <div class="header">
+    Current Page is {{menuname}} in Header componetn
   <ul>
       <li>
-          <a  href="home" class="active_menu">Home</a>
+          <a [ngClass]="{'active_menu':menuname=='home'}" href="home">Home</a>
       </li>
       <li>
-          <a href="about" class="link">About </a>
+          <a [ngClass]="{'active_menu':menuname=='about'}"  href="about" class="link">About </a>
       </li>
       <li>
-          <a href="contact" class="link">Contact</a>
+          <a [ngClass]="{'active_menu':menuname=='contact'}"  href="contact" class="link">Contact</a>
       </li>
+      <!-- ngif->false->element will be hidden -->
+      <!-- ngif->true->element will be shown -->
+      <li *ngIf="showLogout">
+        <a href="#" class="link">Logout</a>
+    </li>
+    <!-- ngFor-> to iterate the json object 
+            for(let obj in arrayName){
+
+            }
+    -->
+    <div *ngFor="let ob of studentDetails">
+        {{ob.name}}--{{ob.age}}
+    </div>
   </ul>
+  <div>
+      <input [(ngModel)]="message" type="text" placeholder="Enter Message">
+      <input type="button" (click)="pushToParent()" value="Click to send to parent.">
+  </div>
 
 </div>

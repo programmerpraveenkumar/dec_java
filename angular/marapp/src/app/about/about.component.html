@@ -1,9 +1,26 @@
 
 <div class="container">
-    <app-header></app-header>
+    <app-header menuname="about" name="this is from about componet"></app-header>
     <div class="content">
-        <h1>This is <span>About</span> html content</h1>
+        <h1>{{pageTitle | uppercase }}</h1>
         
     </div>
     <div class="footer">Copyright2022-2023</div>
+
+    <!-- load the variable name as class -->
+    <h1 [ngClass]="cssClassName">hi click to change the classes</h1>
+    <button (click)="changeCssColor('class1')">Red</button>
+    <button (click)="changeCssColor('class2')">blue</button>
+    <button (click)="changeCssColor('class3')">Green</button>
+
     </div>
+
+    <div *ngFor="let user of peopleList">        
+        <span [ngClass]="{'child':user.age<15}">{{user.name | uppercase}}--{{user.age}}</span>
+    </div>
+
+<h1>{{currentDate | date :'longDate'}}</h1>
+
+<h1>{{price | currency}}</h1>
+<h1>{{num | square}}</h1>
+<h1>{{num2 | square}}</h1>

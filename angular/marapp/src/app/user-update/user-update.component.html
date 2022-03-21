@@ -1,0 +1,46 @@
+<div class="container">
+  <app-header menuname="home" name="sample value from home"></app-header>
+ 
+     <div>
+       <h1>Name update</h1>
+       <div><input type="text" placeholder="Enter Name">
+        <button>Click to update Name</button>
+        </div>
+     </div>
+
+     <div>
+      <h1>Passowrd UPdate</h1>
+        <div>
+          <input type="text" placeholder="Enter Password">
+        </div>  
+        <div>
+          <input type="text" placeholder="Enter New Password">
+        </div>
+        <div>
+          <input type="text" placeholder="Enter Re Password">
+        </div>
+        <button>Click to update Name</button>
+      </div>
+    
+
+
+     <div>
+      <h1>Mobile update</h1>
+      <div>
+        <input type="text" placeholder="Enter Mobile NO">
+       <button>Click to update Mobile</button>
+     </div>
+     </div>
+
+     <div>
+      <h1>picture update</h1>
+      <div>
+        <input (change)="profileImgSelect($event)" type="file" accept= "image/*">
+       <button>Click to update <picture></picture></button>
+     </div>
+     </div>
+           
+      </div>
+      
+    
+  

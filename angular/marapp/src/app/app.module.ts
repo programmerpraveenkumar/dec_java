@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 
 //import HttpClientModule for http in application
 import{HttpClientModule} from '@angular/common/http';
+import { SquarePipe } from './square.pipe';
+import { UserUpdateComponent } from './user-update/user-update.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import{HttpClientModule} from '@angular/common/http';
     AboutComponent,
     ContactComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SquarePipe,
+    UserUpdateComponent
   ],
   imports: [
     BrowserModule,

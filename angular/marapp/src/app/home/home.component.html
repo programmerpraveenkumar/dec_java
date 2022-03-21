@@ -1,13 +1,15 @@
 <div class="container">
-<app-header></app-header>
+<app-header menuname="home" name="sample value from home"></app-header>
 <div class="content">
-    <h1>This is <span>{{pageName}}</span> html content</h1>
+  
+    <h1>This is <span>{{pageName | uppercase}}</span> html content</h1>
 </div>
     <!-- data binding-- display the variable from ts -->
     
     <div class="bg-color">{{firstName}}</div>
     <div>
         <div class="box leftbox">
+         
             <ul>
                 <li>
                     <a  href="home.html">{{pageName}}</a>
@@ -35,7 +37,7 @@
           <h1>{{error}}</h1>
           <button (click)="getHttpCall()">Get Http Call</button>
           <button (click)="postHttpCall()">Post Http Call</button>
-          <button (click)="postHttpCallWithHeader()">POSt Call with Http Header</button>
+          <button (click)="getPageCOunt()">POSt Call with Http Header</button>
      
         </div>
         <div class="box rightbox">
@@ -49,5 +51,19 @@
               
             </ul>
         </div>
+    </div>
+    <button (click)="listUser(0)">List THe users</button>
+<!-- whose id is 4 it want to hide the user -->
+    <div class="user-list"  *ngFor="let user of userlist">
+        <span>{{user.name}}--{{user.email}}</span>
+        <button (click)="naviagetToedit()" *ngIf="userid == user.id">Edit</button>
+    </div>
+    <div>
+        <button (click)="listUser(page)" *ngFor="let page of pageCount">{{(page+1)}}</button>
+    </div>
+    <div *ngFor="let user of serJsonRespone">
+        {{user.name}}
+        {{user.address?.cityname}}
+        {{user.address?.pincode}}
     </div>
     </div>

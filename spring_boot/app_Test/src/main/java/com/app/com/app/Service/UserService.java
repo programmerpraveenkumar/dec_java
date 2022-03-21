@@ -347,4 +347,31 @@ select * from user where  age >25
 
         return em.createQuery(cr).getResultList();//execute query and get the list
     }
+    public List<UserModel> searchUser1(int pageNo){
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<UserModel> cr = cb.createQuery(UserModel.class);
+        //req_email.equals("")
+        Root<UserModel> userModel = cr.from(UserModel.class);//get the class from criteriaquery
+//        List<Predicate> predicates = new ArrayList<>();//to search the list
+//
+//        if(req_name!= null && !req_name.equals("")){//if not empty and not null  add below query
+//            //predicates.add(cb.equal(userModel.get("name"), req_name));//name is column name in the model.
+//            predicates.add(cb.like(userModel.get("name"), req_name+"%"));
+//        }
+//        if(req_email != null && !req_email.equals("")){//if not empty and not null add below query
+//            predicates.add(cb.equal(userModel.get("email"), req_email));//name is column name in the model.
+//        }
+
+
+//        if(balance > 0){
+//            //below queyr will add only when there is balance.
+//            predicates.add(cb.lessThan(userModel.get("balance"),balance));//yyy-mm--dd
+//        }
+
+      //  cr.where(predicates.toArray(new Predicate[0]));//add predicates with where condition
+
+
+
+        return em.createQuery(cr).setMaxResults(10).setFirstResult(pageNo).getResultList();//execute query and get the list
+    }
 }

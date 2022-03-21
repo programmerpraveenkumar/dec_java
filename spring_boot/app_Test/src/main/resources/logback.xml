@@ -20,7 +20,9 @@
         <encoder>
             <pattern>%d %p %c{1.} [%t] %m%n</pattern>
         </encoder>
+
     </appender>
+
 
     <logger name="com.app" level="debug" additivity="false">
         <appender-ref ref="FILE-ROLLING"/>
@@ -29,5 +31,6 @@
     <root level="error">
         <appender-ref ref="FILE-ROLLING"/>
     </root>
+
 
 </configuration>

@@ -18,6 +18,9 @@ public interface UserRepo extends JpaRepository<UserModel,Integer> {
         @Query("select um from UserModel um where um.id=?1 and um.token = ?2")
     Optional<UserModel> getTokenByUserId(Integer userId,String token);
 
+//        @Query("select count(um) from UserModel um")
+//        Optional<UserModel> getTotalcount();
+
     @Transactional
     @Modifying
     @Query("update UserModel um set  um.token=?2 where um.id=?1")

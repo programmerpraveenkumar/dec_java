@@ -1,8 +1,9 @@
 
 <div class="container">
-    <app-header></app-header>
+    <app-header (toParent)="fromChild($event)" menuname="contact"></app-header>
     <div class="content">
         <h1>This is <span>Contact</span> html content</h1>
     </div>
+    <h2>From child to contact--{{message}}</h2>
     <div class="footer">Copyright2022-2023</div>
     </div>

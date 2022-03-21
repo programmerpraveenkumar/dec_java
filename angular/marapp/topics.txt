@@ -56,11 +56,32 @@ http get and post
     1.add HTTPCLientModule in app.moudule.ts
     2.Create object in HttpClient in component.
 Directives
-Pipes
+Directives:
+Structural
+	hide and show 
+ngIf=>true ->element will be visible
+		falsel->element will be hidden 
+
+ngClass->condtional styling and loading the classes from the vairable
+data exchange:
+    Parent to children:
+    @Input()
+        add the attribute in the parent htms's child tags   
+        add the vairable in the child compentn with @Input().print the value in the child.html
+
+    Child to Parent:
+        @Output();
+        add the method EventEmtter in child componet_name
+        using emit method from EventEmtter send the data to parent
+
+
+Pipes - > text transform
 Data binding
 Token validation and sending header in http
 Multi modules 
 promise and observable
+
+
 
 
 
